@@ -1,8 +1,12 @@
-import HeaderComponent from "./Components/HeaderComponent";
 import React, { useState, useEffect } from 'react';
-import NewsComponent from './Components/NewsComponent';
+import HeaderComponent from "./Components/HeaderComponent";
+import NewsComponentFeed from './Components/NewsComponentFeed';
 
-const Home = () => {
+
+function Feed() {
+
+    const feedTitle = "Top Stories"
+
 
     const newsItems = [
         {
@@ -37,10 +41,11 @@ const Home = () => {
     return () => clearTimeout(timer); 
   }, []);
 
+
     return(
-        <div className="bg-neutral-800 min-h-screen flex flex-col items-center">
-        <h1 className="text-6xl text-center font-bold text-white mt-5 mb-3 ">
-          Echo News
+        <div className="bg-neutral-800 min-h-screen flex flex-col ">
+            <h1 className="text-6xl text-center font-bold text-white mt-5 ">
+          Personal Feed
         </h1>
         <div
           className={` ml-7 transition-opacity duration-500 ${
@@ -50,16 +55,14 @@ const Home = () => {
           <HeaderComponent />
         </div>
         <div className="mt-10 w-full px-6">
-          <h2 className="text-white text-3xl text-left ml-12">
-            Top Stories
-          </h2>
-           <NewsComponent items={newsItems} />
-           <NewsComponent items={newsItems} />
-           <NewsComponent items={newsItems} />
         </div>
-      </div>
+        <NewsComponentFeed items={newsItems} topic = {feedTitle} />
+        <NewsComponentFeed items={newsItems}topic = {feedTitle}/>
+        <NewsComponentFeed items={newsItems} topic = {feedTitle}/>
+      </div>       
     );
 
-};
 
-export default Home
+}
+
+export default Feed;

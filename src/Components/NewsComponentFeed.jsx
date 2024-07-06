@@ -1,10 +1,12 @@
 import React from 'react';
 
-function NewsComponent({ items }) {
+function NewsComponentFeed({ items, topic }) {
   return (
+    <>
+    <h2 className = "text-white text-3xl mt-2 mb-4 text-left ml-16">{topic}</h2>
     <div className="flex flex-wrap justify-center gap-4">
       {items.map((item, index) => (
-        <div key={index} className="flex bg-stone-500 p-2 rounded-lg shadow-md mt-2 mb-5 max-w-screen-sm">
+        <div key={index} className="flex bg-stone-500 p-2 rounded-lg shadow-md mb-5 max-w-screen-sm">
           <div className="w-2/3">
             <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
             <p className="text-gray-900 mb-4">{item.text}</p>
@@ -24,7 +26,8 @@ function NewsComponent({ items }) {
         </div>
       ))}
     </div>
+    </>
   );
 }
 
-export default NewsComponent;
+export default NewsComponentFeed;
