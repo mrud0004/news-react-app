@@ -5,10 +5,7 @@ import HeaderComponent from './Components/HeaderComponent';
 function PreferencesPage() {
   const { preferences, setPreferences } = useContext(PreferencesContext);
   const [preferenceList, setPreferenceList] = useState([
-    'Photography', 'Books', 'Reading', 'Gaming', 'Song',
-    'Movies', 'Travelling', 'Writing', 'Philosophy', 'Astrology',
-    'Animator', 'Animals', 'Acting', 'Sleeping', 'Dancing',
-    'Story', 'Cinematography', 'Director', 'Drawing', 'Food', 'Dreamer'
+    'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'
   ]);
 
   const handleTogglePreference = (preference) => {
@@ -46,10 +43,11 @@ function PreferencesPage() {
         {preferenceList.map((preference, index) => (
           <div
             key={index}
-            className={`cursor-pointer px-4 py-2 rounded-full shadow-md ${
+            className={`cursor-pointer px-4 py-2 rounded-full shadow-md capitalize ${
               preferences.includes(preference) ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-900'
             }`}
             onClick={() => handleTogglePreference(preference)}
+           
           >
             {preference}
           </div>

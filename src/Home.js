@@ -2,40 +2,50 @@ import HeaderComponent from "./Components/HeaderComponent";
 import React, { useState, useEffect } from 'react';
 import NewsComponent from './Components/NewsComponent';
 
+const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+const API_URL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=24&apiKey=${API_KEY}`;
+
 const Home = () => {
 
-    const newsItems = [
-        {
-          image: 'https://static.ffx.io/images/$zoom_0.73828125%2C$multiply_1.2116%2C$ratio_1.5%2C$width_756%2C$x_0%2C$y_0/t_crop_custom/q_62%2Cf_auto/976dc34c0d62045aec2571887d29835924d7cade',
-          title: 'What makes for a good husband? It’s the small things',
-          text: 'At a time when almost half of Australian marriages end in divorce, TV presenter Richard Hammond has some smart advice for men. And it’s got nothing to do with a sexy hotel stay or a Zamel’s catalogue.',
-          author: {
-            name: 'Kate Halfpenny',
-            role: 'Regular columnist',
-            image: 'https://static.ffx.io/images/$zoom_0.73828125%2C$multiply_1.2116%2C$ratio_1.5%2C$width_756%2C$x_0%2C$y_0/t_crop_custom/q_62%2Cf_auto/976dc34c0d62045aec2571887d29835924d7cade',
-          },
-        },
-        {
-          image: 'https://static.ffx.io/images/$zoom_0.73828125%2C$multiply_1.2116%2C$ratio_1.5%2C$width_756%2C$x_0%2C$y_0/t_crop_custom/q_62%2Cf_auto/976dc34c0d62045aec2571887d29835924d7cade',
-          title: 'What makes for a good husband? It’s the small things',
-          text: 'At a time when almost half of Australian marriages end in divorce, TV presenter Richard Hammond has some smart advice for men. And it’s got nothing to do with a sexy hotel stay or a Zamel’s catalogue.',
-          author: {
-            name: 'Kate Halfpenny',
-            role: 'Regular columnist',
-            image: 'https://static.ffx.io/images/$zoom_0.73828125%2C$multiply_1.2116%2C$ratio_1.5%2C$width_756%2C$x_0%2C$y_0/t_crop_custom/q_62%2Cf_auto/976dc34c0d62045aec2571887d29835924d7cade',
-          },
-        },
-      ];
-
+    const feedTitle = "Top Stories"
+    const [newsItems, setNewsItems] = useState([]);
     const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
+
+    const fetchNews = async () => { 
+        try{
+            const response = await fetch(API_URL);
+            const data = await response.json();
+            const articles = data.articles.map(article =>({
+                image: article.urlToImage || '/news-default.jpeg',
+                title: article.title,
+                text: article.description,
+                link: article.url,
+                author:{
+                    name: article.author || 'Unknown',
+                    role:  'Reporter',
+                    image: article.urlToImage || '/news-default.jpeg'
+                }
+            }));
+            setNewsItems(articles);
+        }catch(error){
+            console.error(error);
+        }
+    };
+    fetchNews();
     const timer = setTimeout(() => {
       setShowHeader(true);
     }, 1000); 
 
     return () => clearTimeout(timer); 
   }, []);
+
+  const chunkedNewsItems = [];
+  for (let i = 0; i < newsItems.length; i += 2) {
+    chunkedNewsItems.push(newsItems.slice(i, i + 2));
+  }
+
 
     return(
         <div className="bg-neutral-800 min-h-screen flex flex-col items-center">
@@ -53,9 +63,9 @@ const Home = () => {
           <h2 className="text-white text-3xl text-left ml-12">
             Top Stories
           </h2>
-           <NewsComponent items={newsItems} />
-           <NewsComponent items={newsItems} />
-           <NewsComponent items={newsItems} />
+          {chunkedNewsItems.map((items, index) => (
+          <NewsComponent key={index} items={items} topic={feedTitle} />
+        ))}
         </div>
       </div>
     );

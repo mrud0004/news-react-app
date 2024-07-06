@@ -4,7 +4,7 @@ function NewsComponent({ items }) {
   return (
     <div className="flex flex-wrap justify-center gap-4">
       {items.map((item, index) => (
-        <div key={index} className="flex bg-stone-500 p-2 rounded-lg shadow-md mt-2 mb-5 max-w-screen-sm">
+        <a href={item.link} key={index} target="_blank" rel="noopener noreferrer" className="flex bg-stone-500 p-2 rounded-lg shadow-md mt-2 mb-5 max-w-screen-sm">
           <div className="w-2/3">
             <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
             <p className="text-gray-900 mb-4">{item.text}</p>
@@ -21,7 +21,7 @@ function NewsComponent({ items }) {
           <div className="w-1/3 flex justify-end ml-2">
             <img className="object-cover rounded-lg" src={item.image} alt={item.title} />
           </div>
-        </div>
+        </a>
       ))}
     </div>
   );
