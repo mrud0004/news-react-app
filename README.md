@@ -3,7 +3,7 @@ Echo News is a React application that fetches and displays the latest news artic
 
 # Video Demonstration
 
-![Echo News Demo](https://www.youtube.com/watch?v=JAl6BmLOdk8)
+[![Echo News app](https://img.youtube.com/vi/JAl6BmLOdk8/0.jpg)](https://www.youtube.com/watch?v=JAl6BmLOdk8)
 
 # Features
 - Display top news stories
