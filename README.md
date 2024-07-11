@@ -34,7 +34,7 @@ npm install
 Create a .env file in the root directory and add your Currents API key:
 
 makefile
-Copy code
+Copy code:
 REACT_APP_CURRENTS_API_KEY=your_actual_api_key
 ```
 
@@ -49,9 +49,9 @@ The application will open in your default browser at http://localhost:3000.
 ## Deployment
 
 The application can be deployed using Vercel or any other hosting service. Follow these steps to deploy on Vercel:
-Push your code to GitHub.
-Import your GitHub repository into Vercel.
-Add the REACT_APP_CURRENTS_API_KEY environment variable in the Vercel dashboard.
-Deploy your project.
+- Push your code to GitHub.
+- Import your GitHub repository into Vercel.
+- Add the REACT_APP_CURRENTS_API_KEY environment variable in the Vercel dashboard.
+- Deploy your project.
 
 
