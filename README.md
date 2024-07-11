@@ -1,6 +1,10 @@
 # Echo News
 Echo News is a React application that fetches and displays the latest news articles from various categories. The app uses the News API to gather news and allows users to select their preferred news categories.
 
+# Video Demonstration
+
+(https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2l3OTBibHBmeW4yMTdjMmZoNmh5eDdmam1qdWd2bGxyb3lzMG5pdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KWXfZGBdU7zsLKyURr/giphy.gif)
+
 # Features
 - Display top news stories
 - Category-based news filtering
