@@ -9,7 +9,7 @@ Echo News is a React application that fetches and displays the latest news artic
 - User preferences for news categories
   
 # Getting Started
-## These instructions will help you set up and run the project on your local machine for development and testing purposes.
+### These instructions will help you set up and run the project on your local machine for development and testing purposes.
 
 # Prerequisites
 Node.js and npm installed on your machine.
@@ -54,28 +54,4 @@ Import your GitHub repository into Vercel.
 Add the REACT_APP_CURRENTS_API_KEY environment variable in the Vercel dashboard.
 Deploy your project.
 
-
-## Folder Structure
-
-news-react-app/
-├── public/
-│   ├── index.html
-│   └── ...
-├── src/
-│   ├── Components/
-│   │   ├── HeaderComponent.js
-│   │   ├── NewsComponent.js
-│   │   ├── NewsComponentFeed.js
-│   │   └── ...
-│   ├── PreferencesContext.js
-│   ├── PreferencesPage.js
-│   ├── Feed.js
-│   ├── Home.js
-│   ├── App.js
-│   ├── setupProxy.js
-│   └── ...
-├── .env
-├── package.json
-├── README.md
-└── ...
 
